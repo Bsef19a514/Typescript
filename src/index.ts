@@ -56,3 +56,11 @@ let numArr5:(string | number | boolean)[]=[];
 numArr5[0]='zain';
 numArr5[1]=2;
 numArr5[2]=true;
+
+// Tuples in TS (an array whose size is two)
+let t1:[number,string]=[1,"zain"];
+//but we can do so
+t1.push(514); //we can push more elements into a tuple
+
+// Enum in Ts
+enum size  {Small=1,Large,Medium};
