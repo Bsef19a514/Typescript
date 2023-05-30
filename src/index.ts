@@ -60,7 +60,82 @@ numArr5[2]=true;
 // Tuples in TS (an array whose size is two)
 let t1:[number,string]=[1,"zain"];
 //but we can do so
-t1.push(514); //we can push more elements into a tuple
+t1.push(514); //we can push more elements into a tuple so we should avoid doing so
 
 // Enum in Ts
-enum size  {Small=1,Large,Medium};
+const enum Size  {Small=10,Medium=20,Large=30}; //by default the values will be assigned as Small=0, Medium=1 and so on.
+
+let mySize:Size=Size.Medium;
+console.log(mySize);
+
+//Functions in Ts
+
+function sum(n1:number,n2:number):number{
+    return n1+n2;
+}
+console.log(sum(1,2));
+
+function increment(n1:number,n2?:number):number{ //function with optional parameter
+    return n1+(n2||1);
+}
+console.log(increment(10,2));
+console.log(increment(10));
+
+function multiply(n1:number,n2=2):number{ //with default parameter value
+    return n1*n2;
+}
+console.log(multiply(2,3));
+console.log(multiply(2));
+
+// objects in Ts
+
+let employee:{
+    //type annotations
+    readonly id:number, //readonly specifies that id cant be changed later on. it can only be accessed.
+    name:string,
+    email?:string, //optional property
+    baseSalary:number,
+    salary:(basicSal:number)=> number  //salary is a method whose return typre in number
+}=
+{
+    id:1,
+    name:"zain",
+    baseSalary:1000,
+    salary:(basicSal:number)=>{
+        return basicSal*10;
+    }
+}
+console.log(employee);
+// This is not a good approach as if you were to create 2 or multiple employee objects you have to repeact the code  (type annotations)of crearing employee object
+
+
+// Type alias
+type Employee={
+    readonly id:number, //readonly specifies that id cant be changed later on. it can only be accessed.
+    name:string,
+    email?:string, //optional property
+    baseSalary:number,
+    salary:(basicSal:number)=> number
+}
+
+let e1:Employee={
+    id:2,
+    name:"zarar",
+    baseSalary:2000,
+    salary:(basicSal:number)=>{
+        console.log(basicSal);
+        return basicSal*10;
+    }
+}
+console.log(e1);
+
+let e2:Employee={
+    id:3,
+    name:"asim",
+    baseSalary:1000,
+    salary:(basicSal:number)=>{
+        console.log(basicSal);
+        return basicSal*10;
+    }
+}
+console.log(e2);
